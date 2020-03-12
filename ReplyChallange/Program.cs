@@ -40,7 +40,7 @@ namespace ReplyChallange
             string[] lines = File.ReadAllLines("a_solar.txt");
             width = int.Parse(lines[0][0].ToString());
             height = int.Parse(lines[0][2].ToString());
-            KeyValuePair<char,bool>[,] map =new KeyValuePair<char, bool>[width,height];
+            KeyValuePair<char,bool>[,] map =new KeyValuePair<char, bool>[height, width];
 
             for (int i = 0; i < height; i++)
             {
@@ -48,9 +48,9 @@ namespace ReplyChallange
                 foreach (var node in lines[i + 1])
                 {
                     map[i,j] = new KeyValuePair<char, bool>(node,false);
+                    j++;
                 }
             }
-            
         }
     }
 }
