@@ -15,6 +15,19 @@ namespace ReplyChallange
     class Developer : Unit
     {
         List<string> Skills = new List<string>();
+        private int n;
+        public Developer(string info)
+        {
+            string[] lines = info.Split(' ');
+            Company = lines[0];
+            Bonus = int.Parse(lines[1]);
+            n = int.Parse(lines[2]);
+            for (int i = 0; i < n; i++)
+            {
+                Skills.Add();
+            }
+        }
+
         public override int ComputeTP(Unit neighbour)
         {
             throw new System.NotImplementedException();
@@ -31,10 +44,10 @@ namespace ReplyChallange
     
     internal class Program
     {
-        
+        //ToDo Вернуть 2 пары координат 
         public static void Main(string[] args)
         {
-            int width, height;
+            int width, height, userCount, currentLine;
             List<Unit> units= new List<Unit>();
             //{i,j}
             string[] lines = File.ReadAllLines("a_solar.txt");
@@ -51,6 +64,16 @@ namespace ReplyChallange
                     j++;
                 }
             }
+
+            userCount = int.Parse(lines[height + 1]);
+            currentLine = height + 2;
+            for (int i = 0; i < userCount; i++)
+            {
+                
+                units.Add(new Developer());
+            }
+            
+
         }
     }
 }
