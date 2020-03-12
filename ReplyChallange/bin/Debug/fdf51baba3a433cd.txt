@@ -1,0 +1,64 @@
+        //ToDo Вернуть 2 пары координат
+            private static int[,] returnPairCoordinates(char unit1, char unit2)
+            {
+                int[,] qq = new int[2,2];
+                KeyValuePair<int, int> newPair;
+                for (int i = 0; i < height; i++) {
+                    for (int j = 0; j < width; j++)
+                    {
+                        if ((unit1 == '_' && map[i, j].Key == '_'|| unit1 == 'M' && map[i, j].Key == 'M') && map[i, j].Value != true) //if it is a place for developer or Manager
+                        {
+                            newPair = SomePairExist(i, j, unit2);
+                            if (newPair.Key != i && newPair.Value != j) // if there is some place for other developer
+                            {
+                                KeyValuePair<char, bool> q = map[i, j];
+                                map[i, j] = new KeyValuePair<char, bool>(q.Key, true);
+                                return new int[,]{{i,j},{newPair.Key, newPair.Value}};
+                            }
+                            else
+                               if ((unit2 == '_' && map[i, j].Key == '_' || unit2 == 'M' && map[i, j].Key == 'M') &&
+                                                         map[i, j].Value != true)
+                                                     {
+                                                         newPair = SomePairExist(i, j, unit1);
+                                                         if (newPair.Key != i && newPair.Value != j) // if there is some place for other developer
+                                                         {
+                                                             KeyValuePair<char, bool> q = map[i, j];
+                                                             map[i, j] = new KeyValuePair<char, bool>(q.Key, true);
+                                                             return new int[,]{{i,j},{newPair.Key, newPair.Value}};
+                                                         }
+                                                     }
+                        }
+                        
+
+                    }
+                }
+
+                return null;
+            }
+            
+            static KeyValuePair<int, int> SomePairExist(int i, int j, char unit2)
+            {
+                KeyValuePair<int, int> firstCoordinates = new KeyValuePair<int, int>(i,j);
+                if (j + 1 < width - 1)// if its not last element (width)
+                {
+                    if (unit2 == '_' && map[i, j + 1].Key == '_' && map[i, j].Value != true) //if partner is developer -> add (X, Y+1) in list of developers
+                        return new KeyValuePair<int, int>(i,j+1);
+
+                    if (unit2 == 'M' && map[i, j + 1].Key == 'M' && map[i, j].Value != true) //if partner is developer -> add (X, Y+1) in list of developers
+                        return new KeyValuePair<int, int>(i,j+1);
+                }
+
+                if (i + 1 < height - 1)             // if its not last element (height)
+                {
+                    if ( map[i, j].Value != true && unit2 == '_' && map[i + 1, j].Key == '_') // if partner is developer  -> add (X+1, Y) in list of developers
+                    {
+                        return new KeyValuePair<int, int>(i+1,j);
+                    }
+
+                    if (map[i, j].Value != true && unit2 == 'M' && map[i + 1, j].Key == 'M') // if it is D->M, add in list of DMs
+                    {
+                        return new KeyValuePair<int, int>(i+1,j);
+                    }
+                }
+                return firstCoordinates;
+            }
