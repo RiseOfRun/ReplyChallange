@@ -1,0 +1,5 @@
+C:\Users\runi5\RiderProjects\ReplyChallange\ReplyChallange\bin\Debug\ReplyChallange.exe
+C:\Users\runi5\RiderProjects\ReplyChallange\ReplyChallange\bin\Debug\ReplyChallange.pdb
+C:\Users\runi5\RiderProjects\ReplyChallange\ReplyChallange\obj\Debug\ReplyChallange.csprojAssemblyReference.cache
+C:\Users\runi5\RiderProjects\ReplyChallange\ReplyChallange\obj\Debug\ReplyChallange.exe
+C:\Users\runi5\RiderProjects\ReplyChallange\ReplyChallange\obj\Debug\ReplyChallange.pdb
